@@ -1,0 +1,28 @@
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.connections.MyConnection;
+
+public class DemoTransaction {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		try {
+			Statement st = MyConnection.getMyConnection().createStatement();
+			st.executeUpdate("insert into DEPARTMENT values(91, 'ESST')");
+			st.executeUpdate("insert into DEPARTMENT values(92, 'ETS')");
+			st.executeUpdate("insert into DEPARTMENT values(107, 'CPT')");
+			st.executeUpdate("insert into DEPARTMENT values(100, 'CPT')");
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+	}
+
+}

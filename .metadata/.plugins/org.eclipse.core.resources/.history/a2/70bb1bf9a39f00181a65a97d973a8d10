@@ -1,0 +1,97 @@
+package com.dao;
+
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.beans.Book;
+import com.connections.MyConnection;
+import com.pojos.Department;
+
+public class BookDAOImpl implements BookDAO {
+
+	@Override
+	public boolean addBook(Book book) {
+		// TODO Auto-generated method stub
+		String ADD_BOOK = "insert into BOOK values (?,?,?,?)";
+		boolean flag = false;
+		int count =0;
+		try {
+			PreparedStatement ps = MyConnection.getMyConnection().prepareStatement(ADD_BOOK);
+			
+			ps.setInt(1, book.getIsbn());
+			ps.setString(2, book.getName());
+			ps.setString(3,book.getPublication());
+			ps.setString(4,book.getAuthor());
+			
+			count = ps.executeUpdate();			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(count > 0)
+			return true;
+		else
+			return false;
+	}
+
+	@Override
+	public int updateBook(Book book, int ISBN) {
+		// TODO Auto-generated method stub
+//		Book book_l = new Book();
+		String UPDATE_BOOK = "update BOOK set NAME = ?, PUBL = ?, AUTH = ? where ISBN = ? ";
+		int rows = 0;
+		PreparedStatement ps;
+		try {
+			ps = MyConnection.getMyConnection().prepareStatement(UPDATE_BOOK);
+			ps.setString(1, book.getName());
+			ps.setString(2, book.getPublication());
+			ps.setString(3, book.getAuthor());
+			ps.setInt(4, ISBN);
+			
+			rows = ps.executeUpdate();
+//			if(rows > 0) {
+//				book_l = findBookByISBN(book.getIsbn());
+//			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return rows;
+	}
+
+	@Override
+	public int deleteBook(int ISBN) {
+		// TODO Auto-generated method stub
+		String DELETE_BOOK = "update BOOK set NAME = ?, PUBL = ?, AUTH = ? where ISBN = ? ";
+		int rows = 0;
+		PreparedStatement ps;
+		return 0;
+	}
+
+	@Override
+	public Book findBookByISBN(int ISBN) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> findBooksByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> findAllBooks() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> findBooksByAuthor(String auth_name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

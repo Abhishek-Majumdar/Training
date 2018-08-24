@@ -1,0 +1,27 @@
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.connections.MyConnection;
+
+public class DemoFetchData {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Connection con = MyConnection.getMyConnection();
+		String FIND_DATA = "select * from DEPARTMENT";
+		
+		try {
+			Statement st = con.createStatement();
+			ResultSet set = st.executeQuery(FIND_DATA);
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

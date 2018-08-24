@@ -1,0 +1,10 @@
+package com.beans;
+
+public class Book {
+
+	private int isbn;
+	private String name;
+	private String publication;
+	private String author;
+
+}

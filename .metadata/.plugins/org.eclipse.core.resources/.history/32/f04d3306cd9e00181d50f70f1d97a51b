@@ -1,0 +1,16 @@
+import com.annotations.MyAnnotation;
+
+public class TestAnnotation {
+	
+	@MyAnnotation(value = 100)
+	public static void display() {
+		System.out.println("Display");
+
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

@@ -1,0 +1,17 @@
+package com.dao;
+
+public class DemoBookJDBC {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		System.out.println("-------OPERATIONS-------");
+		System.out.println("1. Add Book");
+		System.out.println("2. Update Book");
+		System.out.println("3. Display all Books" );
+		System.out.println("4. Find Books by Name");
+		System.out.println("5. Find Books by Author name");
+		System.out.println("6. Find Books by ISBN");
+	}
+
+}

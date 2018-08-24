@@ -1,0 +1,27 @@
+
+public class DemoBlock {
+	
+	public DemoBlock() {
+		System.out.println("constructor invoked");
+	}
+	
+	{
+		System.out.println("Non-static block invoked");
+	}
+	
+	static {
+		System.out.println("Static block invoked");
+	}
+	
+	public void Display() {
+		System.out.println("Display invoked");
+	}
+
+	public static void show() {
+		System.out.println("Static show function invoked");
+	}
+	
+	public static void main(Strings []args) {
+		DemoBlock.show();
+	}
+}

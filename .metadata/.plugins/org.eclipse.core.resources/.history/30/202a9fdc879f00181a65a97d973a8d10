@@ -1,0 +1,55 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
+
+import com.connections.MyConnection;
+import com.pojos.Department;
+
+public class DepartmentDAO {
+	
+	public int addDepartment(Department dept)
+	{
+		String INSERT_DEPT = "insert into DEPARTMENT values (?,?)";
+		int r =0;
+		try {
+			PreparedStatement ps = MyConnection.getMyConnection().prepareStatement(INSERT_DEPT);
+			
+			ps.setInt(1, dept.getDeptID());
+			ps.setString(2, dept.getDeptName());
+			
+			r = ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return r;
+	}
+	
+	public List<Department> getAllDepartments()
+	{
+		List <Department> departments = new ArrayList<>();
+		Connection con = MyConnection.getMyConnection();
+		String LIST_DEPT = "select * from employee";
+		try {
+			Statement st = con.createStatement();
+			ResultSet set = st.executeQuery(LIST_DEPT);
+			while(set.next())
+			{
+				int depID = set.getInt(1);
+				String depName = set.getString(2);
+//				System.out.println("Department ID: " + depID + " " + "Department Name: " + depName);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

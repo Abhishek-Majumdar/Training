@@ -1,0 +1,28 @@
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.connections.MyConnection;
+
+public class LoginDAO {
+	
+	public boolean checkLogin(String username, String password)
+	{
+		boolean success=false;
+		
+		try {
+			String FIND_USERNAME = "select PASSWORD from LOGIN where UNAME=?";
+			PreparedStatement ps = MyConnection.getMyConnection().prepareStatement(FIND_USERNAME)
+			ps.setString(1, username);
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return success;
+	}
+
+}

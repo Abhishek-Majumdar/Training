@@ -1,0 +1,33 @@
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import com.connections.MyConnection;
+
+public class DemoFetchData {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Connection con = MyConnection.getMyConnection();
+		String FIND_DATA = "select * from DEPARTMENT";
+		
+		try {
+			Statement st = con.createStatement();
+			ResultSet set = st.executeQuery(FIND_DATA);
+			while(set.next())
+			{
+				int depID = set.getInt(1);
+				String depName = set.getString(2);
+				System.out.println("Department ID: " + depID + " " + "Department Name: " + depName);
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+}

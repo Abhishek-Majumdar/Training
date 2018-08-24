@@ -1,0 +1,15 @@
+import com.pojos.Department;
+
+public class testUpdateDept {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		int id_update = 12500;
+		Department dept2 = new Department(295,"COMMODITIES");
+		
+		DepartmentDAO dao = new DepartmentDAO();
+		Department dept_updated = dao.updateDept(id_update, dept2)
+	}
+
+}

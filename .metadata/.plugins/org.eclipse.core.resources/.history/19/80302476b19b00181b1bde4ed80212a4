@@ -1,0 +1,12 @@
+import com.demo.MyInterface2;
+
+public class DemoLambda1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		boolean add(Person person, Person person2);
+		
+	}
+
+}

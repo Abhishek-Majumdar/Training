@@ -1,0 +1,13 @@
+import com.demo.MyInterface2;
+
+public class DemoLambda1 {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		MyInterface2 m = (x,y)->{System.out.println("Addition: " + (x+y));};
+		m.add(50, 70);
+		
+	}
+
+}

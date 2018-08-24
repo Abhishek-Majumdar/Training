@@ -1,0 +1,74 @@
+package com.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
+import com.beans.Book;
+
+public class DemoBookJDBC {
+	
+	public static Book getData()
+	{		
+		int no;
+		String name,publication,author;
+		Scanner sc=new Scanner(System.in);
+		System.out.print("Enter ISBN Number:");
+		no=sc.nextInt();
+		sc.nextLine();
+		System.out.print("Enter Book name:");
+		name=sc.nextLine();
+//		sc.nextLine();
+		System.out.print("Enter Publication:");
+		publication=sc.nextLine();
+//		sc.nextLine();
+		System.out.print("Enter Author's name:");
+		author=sc.nextLine();
+//		sc.nextLine();
+		Book bk=new Book(no,name,publication,author);
+		return bk;
+	}
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int choice = 0;
+		int count = 0;
+		Scanner sc = new Scanner(System.in);
+		BookDAO bDao = new BookDAOImpl();
+		List<Book> books_loc = new ArrayList<>();
+		boolean flag = false;
+		
+		do {
+			System.out.println("-------OPERATIONS-------");
+			System.out.println("1. Add Book");
+			System.out.println("2. Update Book");
+			System.out.println("3. Display all Books" );
+			System.out.println("4. Find Books by Name");
+			System.out.println("5. Find Books by Author name");
+			System.out.println("6. Find Books by ISBN");
+			
+//			sc.nextLine();
+			choice = sc.nextInt();
+			
+			switch(choice)
+			{
+				case 1: System.out.println("You have chosen to Add Book data.");
+						flag = bDao.addBook(getData());
+						if(flag)
+							System.out.println("Record added successfully.");
+						else
+							System.out.println("Operation failed.");
+						break;
+				case 2: System.out.println("You have chosen to update book data, please enter ISBN number: ");
+						int ISBN = sc.nextInt();
+						bDao.updateBook(getData(), ISBN);
+				
+				case 3: System.out.println("You have chosen to view data of all books");
+						books_loc = bDao.findAllBooks();
+						for(Book book: books_loc) 
+							System.out.println(book.toString());
+						break;
+			}
+		} while(choice>= 1 && choice<= 6);	
+	}
+}

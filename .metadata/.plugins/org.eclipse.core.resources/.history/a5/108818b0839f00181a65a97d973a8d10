@@ -1,0 +1,27 @@
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.connections.MyConnection;
+import com.pojos.Department;
+
+public class DepartmentDAO {
+	
+	public boolean addDepartment(Department dept)
+	{
+		String INSERT_DEPT = "insert into DEPARTMENT values (?,?)";
+		
+		try {
+			PreparedStatement ps = MyConnection.getMyConnection().prepareStatement(INSERT_DEPT);
+			
+			ps.setInt(1, dept.getDeptID());
+			ps.setString(2, dept.getDeptName());
+			
+			ps.executeUpdate();
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}
